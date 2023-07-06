@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello Coders - <%=questionObject.title %></title>
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+      body {
+        background-color: #333;
+        color: #fff;
+      }
+
+      .question-div {
+        background-color: #222;
+        padding: 20px;
+      }
+
+      .question-title {
+        font-size: 24px;
+        font-weight: 500;
+        margin-bottom: 10px;
+      }
+
+      .question-link {
+        color: #226ce0;
+      }
+
+      .question-body {
+        font-size: 16px;
+      }
+
+      .footer-container {
+        color: #fff;
+      }
+
+      .copy-container {
+        color: #bbb;
+      }
+
+      .header-laptop {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="header">
+      <div class="header-container">
+        <div class="header-text">
+          <div class="header-text-1">
+            <h1>Hello</h1>
+          </div>
+          <div class="header-text-2">
+            <h1>Coder</h1>
+          </div>
+        </div>
+        <div class="header-logo"></div>
+      </div>
+    </section>
+
+    <section class="loading-div">
+      <div>
+        <img src="./Dual Ball-1s-200px.svg" alt="" />
+      </div>
+    </section>
+
+    <section class="question-div">
+      <h1 class="question-title"><%= questionObject.title %></h1>
+      <small>
+        Source:
+        <a href="<%= questionObject.link %>" target="_blank" class="question-link"><%= questionObject.type %></a>
+      </small>
+      <p class="question-body"><%- questionObject.value %></p>
+    </section>
+
+    <section class="footer">
+      <div class="footer-container">
+        <a
+          href="https://www.linkedin.com/in/mahendra-makad-5b58901ba/"
+          target="_blank"
+          class="footer-link link-1"
+          ><img src="/icons8-linkedin.svg" alt=""
+        /></a>
+        <a href="mailto: mahendramakad87@gmail.com" class="footer-link link-2"
+          ><img src="/icons8-mail-50.png" alt=""
+        /></a>
+      </div>
+      <div class="copy-container">&copy; 2023 All rights reserved</div>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello Coders - Search Engine for DSA Problems</title>
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+      }
+
+      .header {
+        text-align: center;
+        padding: 50px 0;
+      }
+
+      .header h1 {
+        font-size: 48px;
+        font-weight: 600;
+        margin: 0;
+      }
+
+      .search-form {
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      .search-form input[type="text"] {
+        padding: 10px;
+        font-size: 18px;
+      }
+
+      .search-form button {
+        padding: 10px 20px;
+        font-size: 18px;
+        background-color: #f7fe72;
+        border: none;
+        cursor: pointer;
+      }
+
+      .loading-div {
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      .no-results {
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      .no-results h1 {
+        font-size: 24px;
+        font-weight: 500;
+      }
+
+      .results {
+        margin-top: 50px;
+      }
+
+      .question {
+        margin-bottom: 20px;
+      }
+
+      .question .title a {
+        font-size: 18px;
+        font-weight: 500;
+        text-decoration: none;
+        color: #000;
+      }
+
+      .question .body p {
+        font-size: 16px;
+        font-weight: 400;
+        margin: 0;
+      }
+
+      .results {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.question {
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.question .title a {
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+  color: #000;
+}
+
+.question .body p {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0;
+}
+
+
+      .footer {
+        text-align: center;
+        margin-top: 50px;
+        padding: 20px 0;
+        background-color: #f7fe72;
+      }
+
+      .footer .footer-link {
+        display: inline-block;
+        margin: 0 10px;
+      }
+
+      .copy-container {
+        font-size: 12px;
+        font-weight: 400;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="header">
+      <h1>Hello Coders</h1>
+    </section>
+
+    <section class="search-form">
+      <form>
+        <input
+          type="text"
+          name="question"
+          id="question"
+          autocomplete="off"
+          autofocus="on"
+        />
+
+        <button type="submit">Search</button>
+      </form>
+    </section>
+
+    <section class="loading-div">
+      <div>
+        <img src="./Dual Ball-1s-200px.svg" alt="" />
+      </div>
+    </section>
+
+    <section class="no-results" style="display: none;">
+      <h1>Oops! Try searching something else</h1>
+    </section>
+
+    <section class="results" style="display: none;">
+      <div class="question">
+        <div class="title">
+          <a href="#" target="_blank"></a>
+        </div>
+        <div class="body">
+          <p></p>
+        </div>
+      </div>
+      <div class="question">
+        <div class="title">
+          <a href="#" target="_blank"></a>
+        </div>
+        <div class="body">
+          <p></p>
+        </div>
+      </div>
+      <div class="question">
+        <div class="title">
+          <a href="#" target="_blank"></a>
+        </div>
+        <div class="body">
+          <p></p>
+        </div>
+      </div>
+      <div class="question">
+        <div class="title">
+          <a href="#" target="_blank"></a>
+        </div>
+        <div class="body">
+          <p></p>
+        </div>
+      </div>
+      <div class="question">
+        <div class="title">
+          <a href="#" target="_blank"></a>
+        </div>
+        <div class="body">
+          <p></p>
+        </div>
+      </div>
+      <div class="question">
+        <div class="title">
+          <a href="#" target="_blank"></a>
+        </div>
+        <div class="body">
+          <p></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="footer">
+      <div class="footer-container">
+        <a
+          href="https://www.linkedin.com/in/mahendra-makad-5b58901ba/"
+          target="_blank"
+          class="footer-link link-1"
+          ><img src="/icons8-linkedin.svg" alt=""
+        /></a>
+        <a href="mailto: mahendramakad87@gmail.com" class="footer-link link-2"
+          ><img src="/icons8-mail-50.png" alt=""
+        /></a>
+      </div>
+      <div class="copy-container">&copy; 2023 All rights reserved</div>
+    </section>
+
+    <script>
+      const form = document.querySelector("form");
+      const questionElement = form.question;
+      const resultSection = document.querySelector(".results");
+
+      const loadingSection = document.querySelector(".loading-div");
+      const questionLinks = document.querySelectorAll(".title");
+      const questionText = document.querySelectorAll(".body");
+      const noResultsDiv = document.querySelector(".no-results");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        loadingSection.style.display = "block";
+        resultSection.style.display = "none";
+        noResultsDiv.style.display = "none";
+
+        for (let i = 0; i < questionLinks.length; i++) {
+          questionLinks[i].querySelector("a").innerHTML = "";
+          questionLinks[i].querySelector("a").setAttribute("href", "#");
+          questionText[i].querySelector("p").innerHTML = "";
+        }
+        const query = questionElement.value;
+
+        try {
+          const res = await fetch(`/search?query=${query}`, { method: "GET" });
+          const data = await res.json();
+
+          loadingSection.style.display = "none";
+
+          if (data.length === 0) {
+            noResultsDiv.style.display = "block";
+          } else {
+            resultSection.style.display = "grid";
+            document.getElementsByClassName('results')[0].style="grid";
+            for (let i = 0; i < questionLinks.length; i++) {
+              questionLinks[i].querySelector("a").innerHTML = data[i].title;
+              questionLinks[i]
+                .querySelector("a")
+                .setAttribute("href", `/question/${data[i].id}`);
+              questionText[i].querySelector("p").innerHTML = data[i].problem;
+            }
+          }
+
+          console.log(data);
+        } catch (error) {
+          alert(error);
+        }
+      });
+    </script>
+  </body>
+</html>
